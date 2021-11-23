@@ -25,6 +25,12 @@ lc_sigma_clip("acisf03111_repro_evt2_energy_0.5-7000_lc_reduced.fits",outfile='l
 
 deflare "acisf03111_repro_evt2_energy_0.5-7000_lc_reduced.fits" outfile=acisf03111_repro_evt2_energy_0.5-7000_lc_reduced_split.fits method=sigma plot=yes
 
-dmcopy "acisf03111_repro_evt2_energy_0.5-7000_lc_reduced_split.fits[@lc_cut.gti]" acisf03111_repro_evt2_final.fits
+dmcopy "acisf03111_repro_evt2_energy_0.5-7000.fits[@lc_cut.gti]" acisf03111_repro_evt2_final.fits
 
-#moving forward we want to use our fully reduced measurement set
+#moving forward we want to use our fully reduced measurement set in this case acisf03111_repro_evt2_final.fits
+
+#in ds9 we place another circle centered on the source and then go to Analysis -> CIAO Tools -> Count Rate and Fluxes -> Net Counts for Count Rate
+
+#for flux, we need to draw an pandas that excludes any identified jet flux and define it to be background we then use  Analysis -> CIAO Tools -> Count Rate and Fluxes -> Photometry for flux
+
+#we also want the spectral plot for each source - Analysis -> CIAO Tools -> Sherpa -> Spectral Fit - Grab the raw data not just the graph 
