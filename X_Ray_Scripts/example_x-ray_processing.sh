@@ -1,6 +1,6 @@
 #in the shell command terminal
-#example
-chandra_repro check_vf_pha=yes
+chandra_repro check_vf_pha=yes mode=h
+cd repro
 dmcopy "acisf03111_repro_evt2.fits[energy=500:7000]" acisf03111_repro_evt2_energy_0.5-7000.fits 
 
 #load the source in ds9 and put a circle region around the source with a radius of 1.25 arcseconds
@@ -30,8 +30,10 @@ dmcopy "acisf03111_repro_evt2_energy_0.5-7000.fits[@lc_cut.gti]" acisf03111_repr
 
 #moving forward we want to use our fully reduced measurement set in this case acisf03111_repro_evt2_final.fits
 
-#in ds9 we place another circle centered on the source and then go to Analysis -> CIAO Tools -> Count Rate and Fluxes -> Net Counts for Count Rate
+#in ds9 we place another circle centered on the source, and a circle that does not contain the source which is subtracted as background, Region Settings -> Property -> Background. Then go to Analysis -> CIAO Tools -> Count Rate and Fluxes -> Net Counts for Count Rate
 
-#for flux, we need to draw an pandas that excludes any identified jet flux and define it to be background we then use  Analysis -> CIAO Tools -> Count Rate and Fluxes -> Photometry for flux
+#for flux, we need to draw an pandas that excludes any identified jet flux and define it to be background we then use  Analysis -> CIAO Tools -> Count Rate and Fluxes -> Photometry (srcflux) to find flux.
+
+#the Galactic Absorption Parameter will be present in the window that provides the flux value as well. Make note of this.
 
 #we also want the spectral plot for each source - Analysis -> CIAO Tools -> Sherpa -> Spectral Fit - Grab the raw data not just the graph 
